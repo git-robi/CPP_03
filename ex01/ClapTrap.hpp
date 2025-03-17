@@ -14,9 +14,11 @@ class ClapTrap
     unsigned int attackDamage;
 
     public:
-
-    ClapTrap(std::string trapName);
-    ~ClapTrap();
+    ClapTrap();                              // Default constructor
+    ClapTrap(std::string trapName);          // Parameterized constructor
+    ClapTrap(const ClapTrap& other);         // Copy constructor
+    ClapTrap& operator=(const ClapTrap& other); // Copy assignment operator
+    ~ClapTrap();                            // Destructor
     
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
@@ -26,10 +28,6 @@ class ClapTrap
     unsigned int getHitPoints() const;
     unsigned int getEnergyPoints() const;
     unsigned int getAttackDamage() const;
-
-    void setHitPoints(unsigned int points);
-    void setEnergyPoints(unsigned int points);
-    void setAttackDamage(unsigned int damage);
 
     void decreaseEnergyPoints();
     void decreaseHitPoints(unsigned int amount);

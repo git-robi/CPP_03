@@ -1,9 +1,33 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : name("default"), hitPoints(10), energyPoints(10), attackDamage(0)
+{
+    std::cout << "ClapTrap default constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string trapName) : name(trapName), hitPoints(10), energyPoints(10), attackDamage(0)
 {
     std::cout << "ClapTrap " << name << " constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+    std::cout << "ClapTrap copy constructor called" << std::endl;
+    *this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+    std::cout << "ClapTrap copy assignment operator called" << std::endl;
+    if (this != &other)
+    {
+        this->name = other.name;
+        this->hitPoints = other.hitPoints;
+        this->energyPoints = other.energyPoints;
+        this->attackDamage = other.attackDamage;
+    }
+    return *this;
 }
 
 ClapTrap::~ClapTrap()
@@ -75,21 +99,6 @@ unsigned int ClapTrap::getEnergyPoints() const
 unsigned int ClapTrap::getAttackDamage() const
 {
     return (this->attackDamage);
-}
-
-void ClapTrap::setHitPoints(unsigned int points)
-{
-    this->hitPoints = points;
-}
-
-void ClapTrap::setEnergyPoints(unsigned int points)
-{
-    this->energyPoints = points;
-}
-
-void ClapTrap::setAttackDamage(unsigned int damage)
-{
-    this->attackDamage = damage;
 }
 
 void ClapTrap::decreaseEnergyPoints()
