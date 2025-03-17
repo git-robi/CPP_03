@@ -3,15 +3,18 @@
 
 int main(void)
 {
-    ClapTrap trap("trap");
+    ClapTrap clap("Clap");
+    
+    std::cout << "\n=== Combat Test ===\n" << std::endl;
 
-    trap.attack("enemy");
-    trap.takeDamage(3);
-    trap.beRepaired(2);
-
-    std::cout << "ClapTrap hit points: " << trap.getHitPoints() << std::endl;
-
-    std::cout << "ClapTrap energy points: " << trap.getEnergyPoints() << std::endl;
+    clap.attack("enemy");
+    std::cout << "HP: " << clap.getHitPoints() << ", EP: " << clap.getEnergyPoints() << std::endl;
+    
+    clap.takeDamage(5);
+    std::cout << "After taking 5 damage - HP: " << clap.getHitPoints() << std::endl;
+    
+    clap.beRepaired(2);
+    std::cout << "After repair - HP: " << clap.getHitPoints() << ", EP: " << clap.getEnergyPoints() << std::endl;
 
     return 0;
 }
